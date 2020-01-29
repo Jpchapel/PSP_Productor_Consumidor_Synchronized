@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productor_consumidor;
+
+package productorConsumidor;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,26 +13,24 @@ import java.util.logging.Logger;
  *
  * @author Stream
  */
-public class Productor extends Thread {
-
+public class Consumidor extends Thread{
     private Almacen almacen;
 
-    public Productor(String name, Almacen almacen) {
+    public Consumidor(String name, Almacen almacen) {
         super(name);
         this.almacen = almacen;
     }
 
     @Override
     public void run() {
-        while (true) {
+        while(true){
             
             try {
-                almacen.producir(this.getName());
+                almacen.consumir(this.getName());
                 
             } catch (InterruptedException ex) {
-                Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Consumidor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-
 }

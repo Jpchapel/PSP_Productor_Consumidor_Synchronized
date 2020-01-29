@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package productor_consumidor;
+package productorConsumidor;
 
 
 /**
@@ -23,15 +23,15 @@ public class Almacen {
         return producto == 0;
     }
 
-    public synchronized void producir(String nombreProductor) throws InterruptedException {
-        System.out.println(nombreProductor + " intentando almacenar un producto");
+    public synchronized void producir(String productor) throws InterruptedException {
+        System.out.println(productor + " intentando almacenar un producto");
         
         while(isFull()){
             wait();
         }
         
         producto++;
-        System.out.println(nombreProductor + " almacena un producto. "
+        System.out.println(productor + " almacena un producto. "
                 + "Almacén con " + producto + (producto > 1 ? " productos." : " producto."));
 
         notifyAll();
@@ -39,15 +39,15 @@ public class Almacen {
         Thread.sleep(500);
     }
 
-    public synchronized void consumir(String nombreConsumidor) throws InterruptedException {
-        System.out.println(nombreConsumidor + " intentando retirar un producto");
+    public synchronized void consumir(String consumidor) throws InterruptedException {
+        System.out.println(consumidor + " intentando retirar un producto");
         
         while(isEmpty()){
             wait();
         }
         
         producto--;
-        System.out.println(nombreConsumidor + " retira un producto. "
+        System.out.println(consumidor + " retira un producto. "
                 + "Almacén con " + producto + (producto > 1 ? " productos." : " producto."));
 
         notifyAll();
