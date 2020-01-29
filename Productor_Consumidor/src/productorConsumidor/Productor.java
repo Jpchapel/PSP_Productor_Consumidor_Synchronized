@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Stream
+ * @author Joaquin Pereira Chapel
  */
 public class Productor extends Thread {
 
